@@ -1,0 +1,11 @@
+$background-color: #5DA49C;
+
+html {
+  background-color: $background-color;
+}
+
+#root {
+    @import 'num_block';
+
+  }
+}
