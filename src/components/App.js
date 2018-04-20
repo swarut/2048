@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from '../reducers/index'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-let store = createStore(reducer);
+import Board from './Board'
+
+let store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <div className="App">
-          ok google
+          <Board />
         </div>
       </Provider>
     );
