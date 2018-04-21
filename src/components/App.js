@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from '../reducers/index'
 import '../css/app.css'
-import Board from './Board'
+import GameController from './GameController'
 
 let store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <Board />
+          <GameController />
         </div>
       </Provider>
     );
