@@ -1,10 +1,13 @@
 $background-color: #5DA49C;
 
-html {
+body {
   background-color: $background-color;
 }
 
 #root {
+  padding: 20px;
+  margin: auto;
+
   @import 'num_block';
   @import 'board';
 }
