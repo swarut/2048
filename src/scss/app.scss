@@ -5,7 +5,6 @@ html {
 }
 
 #root {
-    @import 'num_block';
-
-  }
+  @import 'num_block';
+  @import 'board';
 }
