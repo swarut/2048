@@ -11,7 +11,7 @@ const randomlyAddCell = (cells) => {
 
   let randomIndex = Math.floor(Math.random() * possiblePositions.length)
   return cells.map((item, index) => {
-    if(index === randomIndex) {
+    if(index === possiblePositions[randomIndex]) {
       return 2
     }
     return item
@@ -29,4 +29,11 @@ const twoDimensionCells = (cells, width = 4) => {
     }
     return acc
   }, [])
+}
+
+// Return co-ordinate in 2 dimension for an index.
+const getCoordinate = (cellIndex, width = 4) => {
+  let row = Math.floor(cellIndex/width)
+  let col = cellIndex % width
+  return { row, col }
 }
