@@ -16,7 +16,7 @@ const randomLocation = (row = 4, col = 4) => {
 }
 
 const initializeCells = (startupCells) => {
-  {row, col} = randomLocation()
+  let {row, col} = randomLocation()
   
 }
 
