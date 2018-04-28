@@ -6,12 +6,20 @@ import {
 
 describe('MBoard', () => {
   describe('randomlyAddCell', () => {
-    test('update vocabs for received all vocabs action', () => {
-      expect(true).toBe(true)
-      // let action = receivedAllVocabs('verb', 'allvocabs')
-      // let updatedState = vocabs({}, action)
-      // expect(updatedState).not.toBeNull()
-      // expect(updatedState.isFetching).toBe(false)
+    test('randomly adds 2 to the cells', () => {
+      let cells = (new Array(16)).fill(null)
+      let modifiedCells = randomlyAddCell(cells)
+      let twoTimesModifiedCell = randomlyAddCell(modifiedCells)
+
+      let cellWithElement = modifiedCells.reduce((acc, cell) => {
+        return acc += (cell !== null) ? 1 : 0
+      }, 0)
+      let cellsWithElementAfterTwoTimesModified = twoTimesModifiedCell.reduce((acc, cell) => {
+        return acc += (cell !== null) ? 1 : 0
+      }, 0)
+
+      expect(cellWithElement).toBe(1)
+      expect(cellsWithElementAfterTwoTimesModified).toBe(2)
     })
   })
 })
