@@ -7,7 +7,7 @@ class Board extends React.Component {
   renderCells() {
     let items = [1,2,3,4]
     return items.map((i) => {
-      return <Cell value={i} />
+      return <Cell value={i} key={i} />
     })
   }
   render() {

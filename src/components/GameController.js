@@ -6,7 +6,7 @@ import { start } from '../actions/index'
 class GameController extends React.Component {
   render() {
     return (
-      <div class='game-controller'>
+      <div className='game-controller'>
         game started? {this.props.isStarted ? "yes" : "no"}
         <br/>
         <button onClick={this.props.onClick}>start</button>
