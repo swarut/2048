@@ -44,9 +44,19 @@ describe('MBoard', () => {
       expect(matrix[1].length).toBe(1)
       expect(matrix[2].length).toBe(1)
     })
-
   })
 
+  describe('getCoordinate', () => {
+    test('returns coordinate for 2 dimension array from a single dimension index', () => {
+      let cells = (new Array(16))
+      let coord1 = getCoordinate(4, 4)
+      let coord2 = getCoordinate(7, 4)
+      expect(coord1.row).toBe(1)
+      expect(coord1.col).toBe(0)
+      expect(coord2.row).toBe(1)
+      expect(coord2.col).toBe(3)
+    })
+  })
 
 
 })
