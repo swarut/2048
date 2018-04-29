@@ -1,7 +1,9 @@
 import {
   randomlyAddCell,
   matrixize,
-  getCoordinate
+  getCoordinate,
+  modifiedCells,
+  eachPair
 } from './MBoard'
 
 describe('MBoard', () => {
@@ -57,6 +59,51 @@ describe('MBoard', () => {
       expect(coord2.col).toBe(3)
     })
   })
+
+  describe('mergeLeft', () => {
+    describe('merges cells when left arrow is pressed', () => {
+      // test('when there is only one element on the left edge, nothing happen', () => {
+      //   let cells = (new Array(4)).fill(null)
+      //   cells[0] = 2
+      //   let result = mergeLeft(modifiedCells)
+      //   expect(result).toBe([2, null, null, null])
+      // })
+      // test('when there is no element on the left, just move cell from right to left', () => {
+      //   let cells = (new Array(4)).fill(null)
+      //   cells[0] = 2
+      //   let result = mergeLeft(modifiedCells)
+      //
+      // })
+    })
+  })
+
+  describe('eachPair', () => {
+    it('perform operation for each pair', () => {
+      let items = [1, 2, 3, 4]
+      let result = eachPair(items, (cache) => {
+        if(cache.length == 2) {
+          return cache[0] + cache[1]
+        }
+        else {
+          return cache[0]
+        }
+      })
+      expect(result).toEqual([3, 7])
+    })
+    it('perform operation for each pair 2', () => {
+      let items = [1, 2, 3, 4, 5]
+      let result = eachPair(items, (cache) => {
+        if(cache.length == 2) {
+          return cache[0] + cache[1]
+        }
+        else {
+          return cache[0]
+        }
+      })
+      expect(result).toEqual([3, 7, 5])
+    })
+  })
+
 
 
 })
