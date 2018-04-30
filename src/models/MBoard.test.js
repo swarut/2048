@@ -3,6 +3,7 @@ import {
   matrixize,
   getCoordinate,
   modifiedCells,
+  mergeLeft,
   eachPair,
   fillNull
 } from './MBoard'
@@ -63,44 +64,38 @@ describe('MBoard', () => {
 
   describe('mergeLeft', () => {
     describe('merges cells when left arrow is pressed', () => {
-      // test('when there is only one element on the left edge, nothing happen', () => {
-      //   let cells = (new Array(4)).fill(null)
-      //   cells[0] = 2
-      //   let result = mergeLeft(modifiedCells)
-      //   expect(result).toBe([2, null, null, null])
-      // })
-      // test('when there is no element on the left, just move cell from right to left', () => {
-      //   let cells = (new Array(4)).fill(null)
-      //   cells[0] = 2
-      //   let result = mergeLeft(modifiedCells)
-      //
-      // })
+      test('when there is only one element on the left edge, nothing happen', () => {
+        let cells = (new Array(4)).fill(null)
+        cells[0] = 2
+        let result = mergeLeft(cells, 2)
+        expect(result).toEqual([2, null, null, null])
+      })
+      test('when there is no element on the left, just move cell from right to left', () => {
+        let cells = (new Array(4)).fill(null)
+        cells[1] = 2
+        let result = mergeLeft(cells, 2)
+        expect(result).toEqual([2, null, null, null])
+      })
     })
   })
 
   describe('eachPair', () => {
+    let sum = (i1, i2) => {
+      if (typeof(i2) !== "undefined") {
+        return i1 + i2
+      }
+      else {
+        return i1
+      }
+    }
     it('performs operation for each pair', () => {
       let items = [1, 2, 3, 4]
-      let result = eachPair(items, (cache) => {
-        if(cache.length == 2) {
-          return cache[0] + cache[1]
-        }
-        else {
-          return cache[0]
-        }
-      })
+      let result = eachPair(items, sum)
       expect(result).toEqual([3, 7])
     })
     it('performs operation for each pair returning last elements if size is odd', () => {
       let items = [1, 2, 3, 4, 5]
-      let result = eachPair(items, (cache) => {
-        if(cache.length == 2) {
-          return cache[0] + cache[1]
-        }
-        else {
-          return cache[0]
-        }
-      })
+      let result = eachPair(items, sum)
       expect(result).toEqual([3, 7, 5])
     })
   })
