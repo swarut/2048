@@ -3,7 +3,8 @@ import {
   matrixize,
   getCoordinate,
   modifiedCells,
-  eachPair
+  eachPair,
+  fillNull
 } from './MBoard'
 
 describe('MBoard', () => {
@@ -78,7 +79,7 @@ describe('MBoard', () => {
   })
 
   describe('eachPair', () => {
-    it('perform operation for each pair', () => {
+    it('performs operation for each pair', () => {
       let items = [1, 2, 3, 4]
       let result = eachPair(items, (cache) => {
         if(cache.length == 2) {
@@ -90,7 +91,7 @@ describe('MBoard', () => {
       })
       expect(result).toEqual([3, 7])
     })
-    it('perform operation for each pair 2', () => {
+    it('performs operation for each pair returning last elements if size is odd', () => {
       let items = [1, 2, 3, 4, 5]
       let result = eachPair(items, (cache) => {
         if(cache.length == 2) {
@@ -104,6 +105,17 @@ describe('MBoard', () => {
     })
   })
 
-
+  describe('fillNull', () => {
+    it('returns original items if already had a proper width', () => {
+      let items = [1, 2, 3 ,4]
+      let result = fillNull(items, 4)
+      expect(result).toEqual(items)
+    })
+    it('fill null until the items meet the required length', () => {
+      let items = [1, 2, 3 ]
+      let result = fillNull(items, 4)
+      expect(result).toEqual([1, 2, 3, null])
+    })
+  })
 
 })
