@@ -60,6 +60,7 @@ export const mergeLeft = (cells, width = 4) => {
       // Calculate sum of each pair
       cache.push(cell)
       let merged = eachPair(cache, sumIfSame)
+      merged = merged.filter(item => item !== null)
       console.log("merged", merged)
       if(merged.length < width) {
         merged = fillNull(merged, width)
