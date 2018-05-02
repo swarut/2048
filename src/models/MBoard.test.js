@@ -72,14 +72,23 @@ describe('MBoard', () => {
 
         let cells2 = (new Array(16)).fill(null)
         cells2[0] = 2
-        let result2 = mergeLeft(cells2, 2)
-        expect(result2).toEqual([2, null, null, null, null, null, null])
+        let result2 = mergeLeft(cells2, 4)
+        let expected = (new Array(16)).fill(null)
+        expected[0] = 2
+        expect(result2).toEqual(expected)
       })
       test('when there is no element on the left, just move cell from right to left', () => {
         let cells = (new Array(4)).fill(null)
         cells[1] = 2
         let result = mergeLeft(cells, 2)
         expect(result).toEqual([2, null, null, null])
+
+        let cells2 = (new Array(16)).fill(null)
+        cells2[3] = 2
+        let result2 = mergeLeft(cells2, 4)
+        let expected = (new Array(16)).fill(null)
+        expected[0] = 2
+        expect(result2).toEqual(expected)
       })
     })
   })
