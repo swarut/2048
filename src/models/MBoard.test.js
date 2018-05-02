@@ -89,6 +89,16 @@ describe('MBoard', () => {
         let expected = (new Array(16)).fill(null)
         expected[0] = 2
         expect(result2).toEqual(expected)
+
+        cells2[5] = 2
+        cells2[6] = 2
+        cells2[7] = 2
+        result2 = mergeLeft(cells2, 4)
+        expected = (new Array(16)).fill(null)
+        expected[0] = 2
+        expected[4] = 4
+        expected[5] = 2
+        expect(result2).toEqual(expected)
       })
     })
   })
