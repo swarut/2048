@@ -37,18 +37,6 @@ export const getCoordinate = (cellIndex, width = 4) => {
 }
 
 export const mergeLeft = (cells, width = 4) => {
-  let sumIfSame = (a, b = null) => {
-    if((a !== null) && (b !== null) && (a === b)) {
-      return a + b
-    }
-    else if ((a === null) && (b !== null)) {
-      return [b, null]
-    }
-    else {
-      return [a, b]
-    }
-  }
-
   let modifiedCells = cells.reduce((acc, cell, index) => {
     let cache = acc.cache
 
@@ -60,19 +48,30 @@ export const mergeLeft = (cells, width = 4) => {
       // Calculate sum of each pair
       cache.push(cell)
       let merged = eachPair(cache.filter(item => item !== null), sumIfSame)
-      // merged = merged.filter(item => item !== null)
-      console.log("merged", merged)
+      // console.log("merged", merged)
       if(merged.length < width) {
         merged = fillNull(merged, width)
       }
       acc.result = acc.result.concat(merged)
       acc.cache = []
     }
-    console.log("Processing cell", cell, acc)
+    // console.log("Processing cell", cell, acc)
     return acc
 
   }, {result: [], cache: []})
   return modifiedCells.result
+}
+
+export const sumIfSame = (a, b = null) => {
+  if((a !== null) && (b !== null) && (a === b)) {
+    return a + b
+  }
+  else if ((a === null) && (b !== null)) {
+    return [b, null]
+  }
+  else {
+    return [a, b]
+  }
 }
 
 export const eachPair = (items, func) => {

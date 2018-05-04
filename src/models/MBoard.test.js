@@ -5,6 +5,7 @@ import {
   modifiedCells,
   mergeLeft,
   eachPair,
+  sumIfSame,
   fillNull
 } from './MBoard'
 
@@ -121,6 +122,28 @@ describe('MBoard', () => {
       let items = [1, 2, 3, 4, 5]
       let result = eachPair(items, sum)
       expect(result).toEqual([3, 7, 5])
+    })
+  })
+
+  describe('sumIfSame', () => {
+    it('sums the elements if both are same', () => {
+      let a = 10
+      let b = 10
+      let result = sumIfSame(a, b)
+      expect(result).toBe(20)
+    })
+
+    it('returns array of both item if they are different', () => {
+      let a = 10
+      let b = 20
+      let result = sumIfSame(a, b)
+      expect(result).toEqual([a, b])
+    })
+
+    it('returns array of an item and null if only that item is supplied', () => {
+      let a = 10
+      let result = sumIfSame(a)
+      expect(result).toEqual([a, null])
     })
   })
 
