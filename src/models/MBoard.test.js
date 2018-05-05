@@ -122,42 +122,42 @@ describe('MBoard', () => {
 
   describe('mergeRight', () => {
     describe('merges cells when right arrow is pressed', () => {
-      // test('when there is only one element on the right edge, nothing happen', () => {
-      //   let cells = (new Array(4)).fill(null)
-      //   cells[1] = 2
-      //   let result = mergeRight(cells, 2)
-      //   expect(result).toEqual([null, 2, null, null])
-      //
-      //   let cells2 = (new Array(16)).fill(null)
-      //   cells2[1] = 2
-      //   let result2 = mergeRight(cells2, 4)
-      //   let expected = (new Array(16)).fill(null)
-      //   expected[3] = 2
-      //   expect(result2).toEqual(expected)
-      // })
-      // test('when there is no element on the right, just move cell from left to right', () => {
-      //   let cells = (new Array(4)).fill(null)
-      //   cells[0] = 2
-      //   let result = mergeRight(cells, 2)
-      //   expect(result).toEqual([null, 2, null, null])
-      //
-      //   let cells2 = (new Array(16)).fill(null)
-      //   cells2[0] = 2
-      //   let result2 = mergeRight(cells2, 4)
-      //   let expected = (new Array(16)).fill(null)
-      //   expected[3] = 2
-      //   expect(result2).toEqual(expected)
-      //
-      //   cells2[5] = 2
-      //   cells2[6] = 2
-      //   cells2[7] = 2
-      //   result2 = mergeRight(cells2, 4)
-      //   expected = (new Array(16)).fill(null)
-      //   expected[3] = 2
-      //   expected[6] = 2
-      //   expected[7] = 4
-      //   expect(result2).toEqual(expected)
-      // })
+      test('when there is only one element on the right edge, nothing happen', () => {
+        let cells = (new Array(4)).fill(null)
+        cells[1] = 2
+        let result = mergeRight(cells, 2)
+        expect(result).toEqual([null, 2, null, null])
+
+        let cells2 = (new Array(16)).fill(null)
+        cells2[1] = 2
+        let result2 = mergeRight(cells2, 4)
+        let expected = (new Array(16)).fill(null)
+        expected[3] = 2
+        expect(result2).toEqual(expected)
+      })
+      test('when there is no element on the right, just move cell from left to right', () => {
+        let cells = (new Array(4)).fill(null)
+        cells[0] = 2
+        let result = mergeRight(cells, 2)
+        expect(result).toEqual([null, 2, null, null])
+
+        let cells2 = (new Array(16)).fill(null)
+        cells2[0] = 2
+        let result2 = mergeRight(cells2, 4)
+        let expected = (new Array(16)).fill(null)
+        expected[3] = 2
+        expect(result2).toEqual(expected)
+
+        cells2[5] = 2
+        cells2[6] = 2
+        cells2[7] = 2
+        result2 = mergeRight(cells2, 4)
+        expected = (new Array(16)).fill(null)
+        expected[3] = 2
+        expected[6] = 2
+        expected[7] = 4
+        expect(result2).toEqual(expected)
+      })
     })
   })
 

@@ -78,7 +78,10 @@ export const mergeLeft = (cells, width = 4) => {
 
 
 export const mergeRight = (cells, width = 4) => {
-  
+  let modifiedCells = reverse(cells, width)
+  modifiedCells = mergeLeft(modifiedCells, width)
+  modifiedCells = reverse(modifiedCells, width)
+  return modifiedCells
 }
 
 export const sumIfSame = (a, b = null) => {
