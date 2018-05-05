@@ -6,7 +6,9 @@ import {
   mergeLeft,
   eachPair,
   sumIfSame,
-  fillNull
+  fillNull,
+  appendNull,
+  prependNull
 } from './MBoard'
 
 describe('MBoard', () => {
@@ -153,10 +155,31 @@ describe('MBoard', () => {
       let result = fillNull(items, 4)
       expect(result).toEqual(items)
     })
-    it('fill null until the items meet the required length', () => {
+    it('appends null until the items meet the required length', () => {
       let items = [1, 2, 3 ]
       let result = fillNull(items, 4)
       expect(result).toEqual([1, 2, 3, null])
+    })
+    it('prepends null until the items meet the required length', () => {
+      let items = [1, 2, 3 ]
+      let result = fillNull(items, 4, 'front')
+      expect(result).toEqual([null, 1, 2, 3])
+    })
+  })
+
+  describe('appendNull', () => {
+    it('appends null until the items meet the required length', () => {
+      let items = [1, 2, 3 ]
+      let result = appendNull(items, 4)
+      expect(result).toEqual([1, 2, 3, null])
+    })
+  })
+
+  describe('prependNull', () => {
+    it('prepends null until the items meet the required length', () => {
+      let items = [1, 2, 3 ]
+      let result = prependNull(items, 4)
+      expect(result).toEqual([null, 1, 2, 3])
     })
   })
 

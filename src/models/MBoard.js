@@ -48,18 +48,20 @@ export const mergeLeft = (cells, width = 4) => {
       // Calculate sum of each pair
       cache.push(cell)
       let merged = eachPair(cache.filter(item => item !== null), sumIfSame)
-      // console.log("merged", merged)
       if(merged.length < width) {
         merged = fillNull(merged, width)
       }
       acc.result = acc.result.concat(merged)
       acc.cache = []
     }
-    // console.log("Processing cell", cell, acc)
     return acc
 
   }, {result: [], cache: []})
   return modifiedCells.result
+}
+
+export const mergeRight = (cells, width = 4) => {
+
 }
 
 export const sumIfSame = (a, b = null) => {
@@ -93,12 +95,23 @@ export const eachPair = (items, func) => {
   return result.result
 }
 
-export const fillNull = (items, width = 4) => {
+export const fillNull = (items, width = 4, position = 'back') => {
   if(items.length === width) {
     return items
   }
   else {
     let diff = width - items.length
-    return items.concat((new Array(diff)).fill(null))
+    if(position == 'back') {
+      return items.concat((new Array(diff)).fill(null))
+    }
+    else {
+      return (new Array(diff)).fill(null).concat(items)
+    }
   }
+}
+export const prependNull = (items, width = 4) => {
+  return fillNull(items, width, 'front')
+}
+export const appendNull = (items, width = 4) => {
+  return fillNull(items, width, 'back')
 }
