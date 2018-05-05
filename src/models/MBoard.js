@@ -49,7 +49,7 @@ export const mergeLeft = (cells, width = 4) => {
       cache.push(cell)
       let merged = eachPair(cache.filter(item => item !== null), sumIfSame)
       if(merged.length < width) {
-        merged = fillNull(merged, width)
+        merged = appendNull(merged, width)
       }
       acc.result = acc.result.concat(merged)
       acc.cache = []
@@ -58,10 +58,6 @@ export const mergeLeft = (cells, width = 4) => {
 
   }, {result: [], cache: []})
   return modifiedCells.result
-}
-
-export const mergeRight = (cells, width = 4) => {
-
 }
 
 export const sumIfSame = (a, b = null) => {
