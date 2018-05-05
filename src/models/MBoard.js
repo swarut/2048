@@ -36,6 +36,22 @@ export const getCoordinate = (cellIndex, width = 4) => {
   return { row, col }
 }
 
+export const reverse = (cells, width = 4) => {
+  let modifiedCells = cells.reduce((acc, cell, index) => {
+    let cache = acc.cache
+    if (cache.length < (width - 1)) {
+      acc.cache = cache.concat(cell)
+    }
+    else {
+      cache.push(cell)
+      acc.result = acc.result.concat(cache.reverse())
+      acc.cache = []
+    }
+    return acc
+  }, {result: [], cache: []})
+  return modifiedCells.result
+}
+
 export const mergeLeft = (cells, width = 4) => {
   let modifiedCells = cells.reduce((acc, cell, index) => {
     let cache = acc.cache
@@ -62,27 +78,7 @@ export const mergeLeft = (cells, width = 4) => {
 
 
 export const mergeRight = (cells, width = 4) => {
-  let modifiedCells = cells.reduce((acc, cell, index) => {
-    let cache = acc.cache
-
-    if(cache.length < (width - 1)) {
-      // Keep cell in cache until the total number equals to width.
-      acc.cache = cache.concat(cell)
-    }
-    else {
-      // Calculate sum of each pair
-      cache.push(cell)
-      let merged = eachPair(cache.filter(item => item !== null), sumIfSame)
-      if(merged.length < width) {
-        merged = prependNull(merged, width)
-      }
-      acc.result = acc.result.concat(merged)
-      acc.cache = []
-    }
-    return acc
-
-  }, {result: [], cache: []})
-  return modifiedCells.result
+  
 }
 
 export const sumIfSame = (a, b = null) => {
