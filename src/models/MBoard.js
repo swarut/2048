@@ -52,6 +52,10 @@ export const reverse = (cells, width = 4) => {
   return modifiedCells.result
 }
 
+export const diagonalFlip = (cellIndex, width = 4) => {
+  
+}
+
 export const mergeLeft = (cells, width = 4) => {
   let modifiedCells = cells.reduce((acc, cell, index) => {
     let cache = acc.cache
@@ -75,7 +79,6 @@ export const mergeLeft = (cells, width = 4) => {
   }, {result: [], cache: []})
   return modifiedCells.result
 }
-
 
 export const mergeRight = (cells, width = 4) => {
   let modifiedCells = reverse(cells, width)
