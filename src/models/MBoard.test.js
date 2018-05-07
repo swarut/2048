@@ -8,6 +8,7 @@ import {
   mergeLeft,
   mergeRight,
   mergeUp,
+  mergeDown,
   eachPair,
   sumIfSame,
   fillNull,
@@ -200,7 +201,7 @@ describe('MBoard', () => {
         expected[1] = 2
         expect(result2).toEqual(expected)
       })
-      test('when there is no element on the tp[], just move cell from bottom to top', () => {
+      test('when there is no element on the top, just move cell from bottom to top', () => {
         let cells = (new Array(4)).fill(null)
         cells[2] = 2
         let result = mergeUp(cells, 2)
@@ -211,6 +212,47 @@ describe('MBoard', () => {
         let result2 = mergeUp(cells2, 4)
         let expected = (new Array(16)).fill(null)
         expected[0] = 2
+        expect(result2).toEqual(expected)
+      })
+    })
+  })
+
+  describe('mergeDown', () => {
+    describe('merges cells when down arrow is pressed', () => {
+      test('when there is only one element on the bottom edge, nothing happen', () => {
+        let cells = (new Array(4)).fill(null)
+        cells[2] = 2
+        let result = mergeDown(cells, 2)
+        expect(result).toEqual([null, null, 2, null])
+
+        let cells2 = (new Array(16)).fill(null)
+        cells2[12] = 2
+        let result2 = mergeDown(cells2, 4)
+        let expected = (new Array(16)).fill(null)
+        expected[12] = 2
+        expect(result2).toEqual(expected)
+      })
+      test('when there is no element on the bottom, just move cell from top to bottom', () => {
+        let cells = (new Array(4)).fill(null)
+        cells[0] = 2
+        let result = mergeDown(cells, 2)
+        expect(result).toEqual([null, null, 2, null])
+
+        let cells2 = (new Array(16)).fill(null)
+        cells2[8] = 2
+        let result2 = mergeDown(cells2, 4)
+        let expected = (new Array(16)).fill(null)
+        expected[12] = 2
+        expect(result2).toEqual(expected)
+
+        cells2[4] = 2
+        cells2[12] = 2
+        cells2[5] = 2
+        result2 = mergeDown(cells2, 4)
+        expected = (new Array(16)).fill(null)
+        expected[12] = 4
+        expected[8] = 2
+        expected[13] = 2
         expect(result2).toEqual(expected)
       })
     })
