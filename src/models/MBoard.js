@@ -65,9 +65,7 @@ export const diagonalFlip = (cells, width = 4) => {
 
     return acc
   }, [])
-  return modifiedCells.reduce((acc, row) => {
-    return acc.concat(row)
-  }, [])
+  return modifiedCells.reduce((acc, row) => acc.concat(row), [])
 }
 
 export const mergeLeft = (cells, width = 4) => {
