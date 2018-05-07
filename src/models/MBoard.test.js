@@ -3,11 +3,12 @@ import {
   matrixize,
   getCoordinate,
   modifiedCells,
-  mergeLeft,
-  mergeRight,
-  eachPair,
   reverse,
   diagonalFlip,
+  mergeLeft,
+  mergeRight,
+  mergeUp,
+  eachPair,
   sumIfSame,
   fillNull,
   appendNull,
@@ -179,6 +180,37 @@ describe('MBoard', () => {
         expected[3] = 2
         expected[6] = 2
         expected[7] = 4
+        expect(result2).toEqual(expected)
+      })
+    })
+  })
+
+  describe('mergeUp', () => {
+    describe('merges cells when up arrow is pressed', () => {
+      test('when there is only one element on the top edge, nothing happen', () => {
+        let cells = (new Array(4)).fill(null)
+        cells[0] = 2
+        let result = mergeUp(cells, 2)
+        expect(result).toEqual([2, null, null, null])
+
+        let cells2 = (new Array(16)).fill(null)
+        cells2[1] = 2
+        let result2 = mergeUp(cells2, 4)
+        let expected = (new Array(16)).fill(null)
+        expected[1] = 2
+        expect(result2).toEqual(expected)
+      })
+      test('when there is no element on the tp[], just move cell from bottom to top', () => {
+        let cells = (new Array(4)).fill(null)
+        cells[2] = 2
+        let result = mergeUp(cells, 2)
+        expect(result).toEqual([2, null, null, null])
+
+        let cells2 = (new Array(16)).fill(null)
+        cells2[4] = 2
+        let result2 = mergeUp(cells2, 4)
+        let expected = (new Array(16)).fill(null)
+        expected[0] = 2
         expect(result2).toEqual(expected)
       })
     })

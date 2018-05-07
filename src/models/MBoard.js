@@ -99,6 +99,13 @@ export const mergeRight = (cells, width = 4) => {
   return modifiedCells
 }
 
+export const mergeUp = (cells, width = 4) => {
+  let modifiedCells = diagonalFlip(cells, width)
+  modifiedCells = mergeLeft(modifiedCells, width)
+  modifiedCells = diagonalFlip(modifiedCells, width)
+  return modifiedCells
+}
+
 export const sumIfSame = (a, b = null) => {
   if((a !== null) && (b !== null) && (a === b)) {
     return a + b
