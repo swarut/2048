@@ -200,6 +200,16 @@ describe('MBoard', () => {
         let expected = (new Array(16)).fill(null)
         expected[1] = 2
         expect(result2).toEqual(expected)
+
+        cells2[0] = 2
+        cells2[4] = 2
+        cells2[8] = 2
+        result2 = mergeUp(cells2, 4)
+        expected = (new Array(16)).fill(null)
+        expected[0] = 4
+        expected[4] = 2
+        expected[1] = 2
+        expect(result2).toEqual(expected)
       })
       test('when there is no element on the top, just move cell from bottom to top', () => {
         let cells = (new Array(4)).fill(null)
