@@ -52,8 +52,22 @@ export const reverse = (cells, width = 4) => {
   return modifiedCells.result
 }
 
-export const diagonalFlip = (cellIndex, width = 4) => {
-  
+export const diagonalFlip = (cells, width = 4) => {
+  let modifiedCells = cells.reduce((acc, cell, index) => {
+    let col = index % width
+
+    if(!acc[col]) {
+      acc[col] = [cell]
+    }
+    else {
+      acc[col] = acc[col].concat(cell)
+    }
+
+    return acc
+  }, [])
+  return modifiedCells.reduce((acc, row) => {
+    return acc.concat(row)
+  }, [])
 }
 
 export const mergeLeft = (cells, width = 4) => {

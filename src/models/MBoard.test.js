@@ -7,6 +7,7 @@ import {
   mergeRight,
   eachPair,
   reverse,
+  diagonalFlip,
   sumIfSame,
   fillNull,
   appendNull,
@@ -76,6 +77,28 @@ describe('MBoard', () => {
       cells[2] = 2
       result = reverse(cells, 2)
       expect(result).toEqual([null, 2, null, 2])
+    })
+  })
+
+  describe('diagonalFlip', () => {
+    test('flips elemets diagonally', () => {
+      let cells = (new Array(4)).fill(null)
+      cells[0] = 0
+      cells[1] = 2
+      cells[2] = 2
+      let result = diagonalFlip(cells, 2)
+      expect(result).toEqual([0, 2, 2, null])
+
+      let cells2 = (new Array(16)).fill(null)
+      cells2[0] = 2
+      cells2[3] = 2
+      cells2[7] = 2
+      let result2 = diagonalFlip(cells2, 4)
+      let expected = (new Array(16)).fill(null)
+      expected[0] = 2
+      expected[12] = 2
+      expected[13] = 2
+      expect(result2).toEqual(expected)
     })
   })
 
