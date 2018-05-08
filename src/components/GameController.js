@@ -11,13 +11,25 @@ import {
 
 class GameController extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.onKeyPressed = this.onKeyPressed.bind(this)
-  }
-
-  onKeyPressed(e) {
-    console.log("key press", e)
+  componentDidMount() {
+    window.onkeyup = (e) => {
+      switch(e.keyCode) {
+        case 38:
+          this.props.onKeyUp()
+          break;
+        case 40:
+          this.props.onKeyDown()
+          break;
+        case 37:
+          this.props.onKeyLeft()
+          break;
+        case 39:
+          this.props.onKeyRight()
+          break;
+        default:
+          break;
+      }
+    }
   }
 
   render() {
@@ -45,16 +57,16 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onClick: () => {
       dispatch(start())
     },
-    onLeftPressed: () => {
+    onKeyLeft: () => {
       dispatch(moveLeft())
     },
-    onRightPress: () => {
+    onKeyRight: () => {
       dispatch(moveRight())
     },
-    onUpPress: () => {
+    onKeyUp: () => {
       dispatch(moveUp())
     },
-    onDownPress: () => {
+    onKeyDown: () => {
       dispatch(moveDown())
     }
   }
