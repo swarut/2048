@@ -80,6 +80,7 @@ export const mergeLeft = (cells, width = 4) => {
       // Calculate sum of each pair
       cache.push(cell)
       let merged = eachPair(cache.filter(item => item !== null), sumIfSame)
+      //let merged = compress(cache.filter(item => item !== null))
       if(merged.length < width) {
         merged = appendNull(merged, width)
       }
@@ -138,8 +139,25 @@ export const eachPair = (items, func) => {
     }
     else {
       cache.push(item)
-      acc.result = acc.result.concat(func(cache[0], cache[1]))
-      acc.cache = []
+      let product = func(cache[0], cache[1])
+      if(typeof(product) === "number") {
+        acc.result = acc.result.concat(product)
+        acc.cache = []
+      }
+      else {
+        // If the summation cant be made, keep the rightmost for the next sum.
+        // If the list reached the end, concat all result
+        // Example case: [4, 2]
+        if(index === items.length - 1) {
+          acc.result = acc.result.concat(product)
+          acc.cache = []
+        }
+        else {
+          acc.result = acc.result.concat(product[0])
+          acc.cache = [product[1]]
+        }
+
+      }
     }
     return acc
   }, {result: [], cache: []})
