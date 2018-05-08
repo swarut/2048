@@ -1,7 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { start } from '../actions/index'
 import Cell from './Cell'
 
 class Board extends React.Component {

@@ -1,9 +1,25 @@
 import React from 'react'
 import Board from './Board'
 import { connect } from 'react-redux'
-import { start } from '../actions/index'
+import {
+  start,
+  moveLeft,
+  moveRight,
+  moveUp,
+  moveDown
+} from '../actions/index'
 
 class GameController extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.onKeyPressed = this.onKeyPressed.bind(this)
+  }
+
+  onKeyPressed(e) {
+    console.log("key press", e)
+  }
+
   render() {
     return (
       <div className='game-controller'>
@@ -28,6 +44,18 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
       dispatch(start())
+    },
+    onLeftPressed: () => {
+      dispatch(moveLeft())
+    },
+    onRightPress: () => {
+      dispatch(moveRight())
+    },
+    onUpPress: () => {
+      dispatch(moveUp())
+    },
+    onDownPress: () => {
+      dispatch(moveDown())
     }
   }
 }

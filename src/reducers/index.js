@@ -25,9 +25,22 @@ const reducer = (state = defaultState, action) => {
         cells: randomlyAddCell(startupCells)
       })
     case MOVE_LEFT:
+      console.log("left")
+      return Object.assign({}, state, {
+        isStarted: true
+      })
     case MOVE_RIGHT:
+      return Object.assign({}, state, {
+        isStarted: true
+      })
     case MOVE_UP:
+      return Object.assign({}, state, {
+        isStarted: true
+      })
     case MOVE_DOWN:
+      return Object.assign({}, state, {
+        isStarted: true
+      })
     default:
       return state
   }
