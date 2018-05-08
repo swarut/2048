@@ -20,25 +20,5 @@
     background-color: white;
     margin: 5px;
   }
-  .cell {
-    margin: 10px;
-    color: white;
-    flex: 1 1 auto;
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .item1 .cell{
-    background-color: red;
-  }
-  .item2 .cell{
-    background-color: yellow;
-  }
-  .item3 .cell{
-    background-color: blue;
-  }
-  .item4 .cell{
-    background-color: green;
-  }
+
 }

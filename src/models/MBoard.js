@@ -18,7 +18,7 @@ export const randomlyAddCell = (cells) => {
 
 export const matrixize = (cells, width = 4) => {
   return cells.reduce((acc, item, index) => {
-    if((index % width) == 0 ) {
+    if((index % width) === 0 ) {
       acc.push([item])
     }
     else {
@@ -132,7 +132,7 @@ export const eachPair = (items, func) => {
     let cache = acc.cache
     if(cache.length < 1) {
       acc.cache = cache.concat(item)
-      if(index == items.length - 1) {
+      if(index === (items.length - 1)) {
         acc.result = (acc.result.concat(item))
       }
     }
@@ -152,7 +152,7 @@ export const fillNull = (items, width = 4, position = 'back') => {
   }
   else {
     let diff = width - items.length
-    if(position == 'back') {
+    if(position === 'back') {
       return items.concat((new Array(diff)).fill(null))
     }
     else {

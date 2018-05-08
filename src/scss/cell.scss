@@ -1,0 +1,21 @@
+.cell {
+  margin: 10px;
+  color: white;
+  flex: 1 1 auto;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-2 .cell{
+  background-color: red;
+}
+.item-4 .cell{
+  background-color: yellow;
+}
+.item-8 .cell{
+  background-color: blue;
+}
+.item-16 .cell{
+  background-color: green;
+}

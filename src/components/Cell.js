@@ -4,7 +4,7 @@ class Cell extends React.Component {
 
   render() {
     return (
-      <div className='item item1'>
+      <div className={`item item-${this.props.value}`}>
         <div className='cell'>
           {this.props.value}
         </div>

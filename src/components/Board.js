@@ -5,9 +5,10 @@ import Cell from './Cell'
 
 class Board extends React.Component {
   renderCells() {
-    let items = [1,2,3,4]
-    return items.map((i) => {
-      return <Cell value={i} key={i} />
+    // let items = [1,2,3,4]
+    let items = this.props.cells
+    return items.map((i, index) => {
+      return <Cell value={i} key={index} />
     })
   }
   render() {
@@ -21,6 +22,7 @@ class Board extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    cells: state.cells
   }
 }
 

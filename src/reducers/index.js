@@ -6,19 +6,23 @@ import {
   MOVE_DOWN
 } from '../actions/index'
 
+import {
+  randomlyAddCell
+} from '../models/MBoard'
+
 const startupCells = (new Array(16)).fill(null)
 
 const defaultState = {
   isStarted: false,
-  cells: startupCells
+  cells: randomlyAddCell(startupCells)
 }
 
 const reducer = (state = defaultState, action) => {
   switch(action.type) {
     case START:
-      return {
+      return Object.assign({}, state, {
         isStarted: true
-      }
+      })
     case MOVE_LEFT:
     case MOVE_RIGHT:
     case MOVE_UP:
