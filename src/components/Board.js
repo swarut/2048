@@ -1,11 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { start } from '../actions/index'
 import Cell from './Cell'
 
 class Board extends React.Component {
   renderCells() {
-    // let items = [1,2,3,4]
     let items = this.props.cells
     return items.map((i, index) => {
       return <Cell value={i} key={index} />
@@ -20,16 +20,8 @@ class Board extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    cells: state.cells
-  }
+Board.propTypes = {
+  cells: PropTypes.arrayOf(PropTypes.number)
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Board)
+export default Board

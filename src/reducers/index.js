@@ -21,7 +21,8 @@ const reducer = (state = defaultState, action) => {
   switch(action.type) {
     case START:
       return Object.assign({}, state, {
-        isStarted: true
+        isStarted: true,
+        cells: randomlyAddCell(startupCells)
       })
     case MOVE_LEFT:
     case MOVE_RIGHT:

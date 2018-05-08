@@ -11,7 +11,7 @@ class GameController extends React.Component {
         <br/>
         <button onClick={this.props.onClick}>start</button>
 
-        <Board />
+        <Board cells={this.props.cells} />
       </div>
     )
   }
@@ -19,7 +19,8 @@ class GameController extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    isStarted: state.isStarted
+    isStarted: state.isStarted,
+    cells: state.cells
   }
 }
 
