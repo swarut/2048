@@ -13,7 +13,8 @@ import {
   sumIfSame,
   fillNull,
   appendNull,
-  prependNull
+  prependNull,
+  equal
 } from './MBoard'
 
 describe('MBoard', () => {
@@ -342,6 +343,15 @@ describe('MBoard', () => {
       let items = [1, 2, 3 ]
       let result = prependNull(items, 4)
       expect(result).toEqual([null, 1, 2, 3])
+    })
+  })
+
+  describe('equal', () => {
+    it('checks equality between 2 cells', () => {
+      let cells1 = [1,2,3]
+      let cells2 = [1,2,3]
+      let result = equal(cells1, cells2)
+      expect(result).toBe(true)
     })
   })
 

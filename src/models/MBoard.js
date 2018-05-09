@@ -178,9 +178,15 @@ export const fillNull = (items, width = 4, position = 'back') => {
     }
   }
 }
+
 export const prependNull = (items, width = 4) => {
   return fillNull(items, width, 'front')
 }
+
 export const appendNull = (items, width = 4) => {
   return fillNull(items, width, 'back')
+}
+
+export const equal = (cells1, cells2) => {
+  return cells1.every((value, index) => value === cells2[index])
 }
