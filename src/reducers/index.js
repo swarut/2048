@@ -12,18 +12,21 @@ import {
   mergeRight,
   mergeUp,
   mergeDown,
-  equal
+  equal,
+  isMovable
 } from '../models/MBoard'
 
 const startupCells = (new Array(16)).fill(null)
 
 const defaultState = {
   isStarted: false,
-  cells: randomlyAddCell(startupCells)
+  cells: randomlyAddCell(startupCells),
+  isGameOver: false
 }
 
 const reducer = (state = defaultState, action) => {
   let merged
+  let isGameOver
   switch(action.type) {
     case START:
       return Object.assign({}, state, {
@@ -35,36 +38,44 @@ const reducer = (state = defaultState, action) => {
       if(!equal(merged, state.cells)) {
         merged = randomlyAddCell(merged)
       }
+      isGameOver = !isMovable(merged, 4)
       return Object.assign({}, state, {
         isStarted: true,
-        cells: merged
+        cells: merged,
+        isGameOver: isGameOver
       })
     case MOVE_RIGHT:
       merged = mergeRight(state.cells, 4)
       if(!equal(merged, state.cells)) {
         merged = randomlyAddCell(merged)
       }
+      isGameOver = !isMovable(merged, 4)
       return Object.assign({}, state, {
         isStarted: true,
-        cells: merged
+        cells: merged,
+        isGameOver: isGameOver
       })
     case MOVE_UP:
       merged = mergeUp(state.cells, 4)
       if(!equal(merged, state.cells)) {
         merged = randomlyAddCell(merged)
       }
+      isGameOver = !isMovable(merged, 4)
       return Object.assign({}, state, {
         isStarted: true,
-        cells: merged
+        cells: merged,
+        isGameOver: isGameOver
       })
     case MOVE_DOWN:
       merged = mergeDown(state.cells, 4)
       if(!equal(merged, state.cells)) {
         merged = randomlyAddCell(merged)
       }
+      isGameOver = !isMovable(merged, 4)
       return Object.assign({}, state, {
         isStarted: true,
-        cells: merged
+        cells: merged,
+        isGameOver: isGameOver
       })
     default:
       return state
