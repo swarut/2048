@@ -190,3 +190,52 @@ export const appendNull = (items, width = 4) => {
 export const equal = (cells1, cells2) => {
   return cells1.every((value, index) => value === cells2[index])
 }
+
+export const isMovable = (cells, width = 4) => {
+  // Want to short circuit as soon as the null or duplicate adjacent items
+  // are found, the normal for loop will be used here.
+  let movable = false
+  let carry = { lastRow: [], col: [] }
+  for(let i = 0; i < cells.length; i++) {
+    if(cells[i] === null) {
+      movable = true
+      break
+    }
+    else {
+      // Check for row adjacent.
+      if(carry.col.length === 0) {
+        carry.col.push(cells[i])
+      }
+      else {
+        if(cells[i] === carry.col[carry.col.length - 1]) {
+          console.log(`ROW MATCH :: check ${cells[i]} and ${carry.col[carry.col.length - 1]}`)
+          movable = true
+          break
+        }
+        else {
+          if((i % width) !== (width - 1)){
+            carry.col.push(cells[i])
+            carry.lastRow.push(cells[i])
+          }
+          else {
+            carry.col.push(cells[i])
+            carry.lastRow = []
+            carry.lastRow = carry.lastRow.concat(carry.col)
+            carry.col = []
+          }
+        }
+      }
+      // Check for column adjacent.
+      if(carry.lastRow.length !== 0) {
+        if(cells[i] == carry.lastRow[i % width]) {
+          console.log(`COL MATCH :: check ${cells[i]} and ${carry.lastRow[i % width]}`)
+          movable = true
+          break
+        }
+      }
+
+    }
+    console.log(`LOOP ${i}, carry.lastRow = ${carry.lastRow}, carry.col = ${carry.col}`)
+  }
+  return movable
+}

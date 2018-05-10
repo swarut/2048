@@ -14,7 +14,8 @@ import {
   fillNull,
   appendNull,
   prependNull,
-  equal
+  equal,
+  isMovable
 } from './MBoard'
 
 describe('MBoard', () => {
@@ -319,12 +320,12 @@ describe('MBoard', () => {
       expect(result).toEqual(items)
     })
     it('appends null until the items meet the required length', () => {
-      let items = [1, 2, 3 ]
+      let items = [1, 2, 3]
       let result = fillNull(items, 4)
       expect(result).toEqual([1, 2, 3, null])
     })
     it('prepends null until the items meet the required length', () => {
-      let items = [1, 2, 3 ]
+      let items = [1, 2, 3]
       let result = fillNull(items, 4, 'front')
       expect(result).toEqual([null, 1, 2, 3])
     })
@@ -332,7 +333,7 @@ describe('MBoard', () => {
 
   describe('appendNull', () => {
     it('appends null until the items meet the required length', () => {
-      let items = [1, 2, 3 ]
+      let items = [1, 2, 3]
       let result = appendNull(items, 4)
       expect(result).toEqual([1, 2, 3, null])
     })
@@ -340,7 +341,7 @@ describe('MBoard', () => {
 
   describe('prependNull', () => {
     it('prepends null until the items meet the required length', () => {
-      let items = [1, 2, 3 ]
+      let items = [1, 2, 3]
       let result = prependNull(items, 4)
       expect(result).toEqual([null, 1, 2, 3])
     })
@@ -348,10 +349,32 @@ describe('MBoard', () => {
 
   describe('equal', () => {
     it('checks equality between 2 cells', () => {
-      let cells1 = [1,2,3]
-      let cells2 = [1,2,3]
+      let cells1 = [1, 2, 3]
+      let cells2 = [1, 2, 3]
       let result = equal(cells1, cells2)
       expect(result).toBe(true)
+    })
+  })
+
+  describe('isMovable', () => {
+    // it('returns true if one of elements is null', () => {
+    //   let cells = [1, 2, 3, null]
+    //   let result = isMovable(cells, 2)
+    //   expect(result).toBe(true)
+    // })
+    // it('returns true if adjacent elements are equal', () =>{
+    //   let cells = [1, 2, 3, 3]
+    //   let result = isMovable(cells, 2)
+    //   expect(result).toBe(true)
+    //
+    //   cells = [1, 2, 1, 4]
+    //   result = isMovable(cells, 2)
+    //   expect(result).toBe(true)
+    // })
+    it('returns false if no adjacent elements are equal', () =>{
+      let cells = [1, 2, 3, 4]
+      let result = isMovable(cells, 2)
+      expect(result).toBe(false)
     })
   })
 
