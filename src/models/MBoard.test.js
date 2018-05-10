@@ -357,20 +357,20 @@ describe('MBoard', () => {
   })
 
   describe('isMovable', () => {
-    // it('returns true if one of elements is null', () => {
-    //   let cells = [1, 2, 3, null]
-    //   let result = isMovable(cells, 2)
-    //   expect(result).toBe(true)
-    // })
-    // it('returns true if adjacent elements are equal', () =>{
-    //   let cells = [1, 2, 3, 3]
-    //   let result = isMovable(cells, 2)
-    //   expect(result).toBe(true)
-    //
-    //   cells = [1, 2, 1, 4]
-    //   result = isMovable(cells, 2)
-    //   expect(result).toBe(true)
-    // })
+    it('returns true if one of elements is null', () => {
+      let cells = [1, 2, 3, null]
+      let result = isMovable(cells, 2)
+      expect(result).toBe(true)
+    })
+    it('returns true if adjacent elements are equal', () =>{
+      let cells = [1, 2, 3, 3]
+      let result = isMovable(cells, 2)
+      expect(result).toBe(true)
+
+      cells = [1, 2, 1, 4]
+      result = isMovable(cells, 2)
+      expect(result).toBe(true)
+    })
     it('returns false if no adjacent elements are equal', () =>{
       let cells = [1, 2, 3, 4]
       let result = isMovable(cells, 2)

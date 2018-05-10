@@ -202,20 +202,25 @@ export const isMovable = (cells, width = 4) => {
       break
     }
     else {
+      // Check for column adjacent.
+      if(carry.lastRow.length === width) {
+        if(cells[i] == carry.lastRow[i % width]) {
+          movable = true
+          break
+        }
+      }
       // Check for row adjacent.
       if(carry.col.length === 0) {
         carry.col.push(cells[i])
       }
       else {
         if(cells[i] === carry.col[carry.col.length - 1]) {
-          console.log(`ROW MATCH :: check ${cells[i]} and ${carry.col[carry.col.length - 1]}`)
           movable = true
           break
         }
         else {
           if((i % width) !== (width - 1)){
             carry.col.push(cells[i])
-            carry.lastRow.push(cells[i])
           }
           else {
             carry.col.push(cells[i])
@@ -225,14 +230,7 @@ export const isMovable = (cells, width = 4) => {
           }
         }
       }
-      // Check for column adjacent.
-      if(carry.lastRow.length !== 0) {
-        if(cells[i] == carry.lastRow[i % width]) {
-          console.log(`COL MATCH :: check ${cells[i]} and ${carry.lastRow[i % width]}`)
-          movable = true
-          break
-        }
-      }
+
 
     }
     console.log(`LOOP ${i}, carry.lastRow = ${carry.lastRow}, carry.col = ${carry.col}`)
