@@ -14,7 +14,8 @@ import {
   mergeDown,
   equal,
   isMovable
-} from '../models/MBoard'
+} from 'w2048'
+// } from '../models/MBoard'
 
 const startupCells = (new Array(16)).fill(null)
 
