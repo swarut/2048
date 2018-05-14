@@ -31,7 +31,8 @@ const reducer = (state = defaultState, action) => {
     case START:
       return Object.assign({}, state, {
         isStarted: true,
-        cells: randomlyAddCell(state.cells)
+        isGameOver: false,
+        cells: randomlyAddCell(startupCells)
       })
     case MOVE_LEFT:
       merged = mergeLeft(state.cells, 4)

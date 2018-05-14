@@ -33,16 +33,25 @@ class GameController extends React.Component {
   }
 
   render() {
+    let board
+    if(!this.props.isGameOver) {
+      board = <Board cells={this.props.cells} />
+    }
+    else {
+      board = <div>Game Over</div>
+    }
+
     return (
       <div className='game-controller'>
         game started? {this.props.isStarted ? "yes" : "no"}<br/>
         game over? {this.props.isGameOver ? "yes" : "no"}
         <br/>
         <button onClick={this.props.onClick}>start</button>
+        {board}
 
-        <Board cells={this.props.cells} />
       </div>
     )
+
   }
 }
 
