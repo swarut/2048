@@ -22,7 +22,12 @@ const defaultState = {
   isStarted: false,
   cells: randomlyAddCell(startupCells),
   isGameOver: false,
-  isGameCompleted: false
+  isGameCompleted: false,
+  gameCompletionPoint: 2048
+}
+
+const isGameCompleted = (cells, gameCompletionPoint) => {
+  cells.some((cell) => cell === gameCompletionPoint)
 }
 
 const reducer = (state = defaultState, action) => {
@@ -44,7 +49,8 @@ const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         isStarted: true,
         cells: merged,
-        isGameOver: isGameOver
+        isGameOver: isGameOver,
+        isGameCompleted: isGameCompleted(merged, state.gameCompletionPoint)
       })
     case MOVE_RIGHT:
       merged = mergeRight(state.cells, 4)
@@ -55,18 +61,21 @@ const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         isStarted: true,
         cells: merged,
-        isGameOver: isGameOver
+        isGameOver: isGameOver,
+        isGameCompleted: isGameCompleted(merged, state.gameCompletionPoint)
       })
     case MOVE_UP:
       merged = mergeUp(state.cells, 4)
       if(!equal(merged, state.cells)) {
-        merged = randomlyAddCell(merged)
+        merged = randomlyAddCell(merged),
+        isGameCompleted: isGameCompleted(merged, state.gameCompletionPoint),
       }
       isGameOver = !isMovable(merged, 4)
       return Object.assign({}, state, {
         isStarted: true,
         cells: merged,
-        isGameOver: isGameOver
+        isGameOver: isGameOver,
+        isGameCompleted: isGameCompleted(merged, state.gameCompletionPoint),
       })
     case MOVE_DOWN:
       merged = mergeDown(state.cells, 4)
@@ -77,7 +86,8 @@ const reducer = (state = defaultState, action) => {
       return Object.assign({}, state, {
         isStarted: true,
         cells: merged,
-        isGameOver: isGameOver
+        isGameOver: isGameOver,
+        isGameCompleted: isGameCompleted(merged, state.gameCompletionPoint),
       })
     default:
       return state
