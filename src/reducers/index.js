@@ -21,7 +21,8 @@ const startupCells = (new Array(16)).fill(null)
 const defaultState = {
   isStarted: false,
   cells: randomlyAddCell(startupCells),
-  isGameOver: false
+  isGameOver: false,
+  isGameCompleted: false
 }
 
 const reducer = (state = defaultState, action) => {

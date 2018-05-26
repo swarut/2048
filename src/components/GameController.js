@@ -60,6 +60,7 @@ const mapStateToProps = (state, ownProps) => {
     isStarted: state.isStarted,
     cells: state.cells,
     isGameOver: state.isGameOver
+    isGameCompleted: state.isGameCompleted
   }
 }
 
