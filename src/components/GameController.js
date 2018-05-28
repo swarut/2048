@@ -44,7 +44,8 @@ class GameController extends React.Component {
     return (
       <div className='game-controller'>
         game started? {this.props.isStarted ? "yes" : "no"}<br/>
-        game over? {this.props.isGameOver ? "yes" : "no"}
+        game over? {this.props.isGameOver ? "yes" : "no"}<br/>
+        game completed? {this.props.isGameCompleted ? "yes" : "no"}
         <br/>
         <button onClick={this.props.onClick}>start</button>
         {board}
@@ -59,7 +60,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     isStarted: state.isStarted,
     cells: state.cells,
-    isGameOver: state.isGameOver
+    isGameOver: state.isGameOver,
     isGameCompleted: state.isGameCompleted
   }
 }
